@@ -42,7 +42,7 @@ export default function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, idx) => (
-            <ScrollReveal key={testimonial.name} variant="fadeUp" delay={idx * 0.08}>
+            <ScrollReveal key={testimonial.name} variant="slideUpBounce" delay={idx * 0.1}>
               <div className="h-full p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium flex flex-col">
                 <div className="flex items-center gap-1 mb-6">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (

@@ -42,7 +42,7 @@ function AnimatedNumber({ value, duration = 2 }) {
   return <span ref={ref}>{displayValue}{suffix}</span>;
 }
 
-export default function AnimatedCounter({ value, label, delay = 0 }) {
+export default function AnimatedCounter({ value, label }) {
   return (
     <div className="text-center">
       <p className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-[var(--brand-navy)] tracking-tight leading-none mb-2">

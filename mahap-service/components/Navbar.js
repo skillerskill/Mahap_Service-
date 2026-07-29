@@ -9,34 +9,43 @@ import { navLinks } from '@/data/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    let rafId;
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(() => setScrollY(window.scrollY));
+    };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
+  const isScrolled = scrollY > 8;
+  const scrollProgress = Math.min(scrollY / 100, 1);
+  const logoScale = 1 - scrollProgress * 0.08;
 
   return (
     <header
       role="banner"
-      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-[450ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-        isScrolled
-          ? 'bg-white/92 backdrop-saturate-150 shadow-[0_1px_3px_rgba(15,23,42,0.04),0_4px_24px_rgba(15,23,42,0.06)]'
-          : 'bg-white/0'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backgroundColor: isScrolled ? `rgba(255,255,255,${0.88 + scrollProgress * 0.07})` : 'rgba(255,255,255,0)',
+        backdropFilter: `blur(${12 + scrollProgress * 8}px) saturate(${100 + scrollProgress * 50}%)`,
+        boxShadow: isScrolled
+          ? `0 1px 3px rgba(15,23,42,${0.02 + scrollProgress * 0.04}), 0 ${4 + scrollProgress * 8}px ${16 + scrollProgress * 12}px rgba(15,23,42,${0.03 + scrollProgress * 0.05})`
+          : '0 0 0 rgba(0,0,0,0)',
+        transition: 'background-color 0.3s, box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+      }}
     >
       <nav className="container-xl flex items-center justify-between h-[72px]" aria-label="Navegação principal">
         <Link
@@ -45,7 +54,10 @@ export default function Navbar() {
           aria-label="Mahap Service — início"
           onClick={closeMenu}
         >
-          <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-white ring-1 ring-[var(--border-light)] transition-shadow group-hover:shadow-md">
+          <div
+            className="relative w-9 h-9 rounded-lg overflow-hidden bg-white ring-1 ring-[var(--border-light)] transition-shadow group-hover:shadow-md"
+            style={{ transform: `scale(${logoScale})`, transformOrigin: 'left center' }}
+          >
             <Image
               src="/images/mahap.jpg"
               alt=""
@@ -105,9 +117,9 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
+        className={`lg:hidden overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        } bg-white border-b border-[var(--border-light)] shadow-lg`}
+        } bg-white/95 backdrop-blur-xl border-b border-[var(--border-light)] shadow-lg`}
       >
         <div className="container-xl py-6 flex flex-col gap-1">
           {navLinks.map((link, idx) => (
