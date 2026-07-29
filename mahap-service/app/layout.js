@@ -65,7 +65,7 @@ const jsonLd = {
   name: 'Mahap Service',
   legalName: 'Mahap Service, Comércio & Prestação de Serviços, Lda.',
   description:
-    'Distribuidor e aplicador oficial dos produtos químicos profissionais Spartan® em Angola. Especialistas em limpeza geral, higienização de estofos, detailing automóvel e controlo de pragas.',
+    'Distribuidor e aplicador oficial dos químicos profissionais Spartan® em Angola. Especialistas em limpeza geral, higienização de estofos, detailing automóvel e controlo de pragas.',
   url: 'https://mahapservice.com',
   telephone: ['+244928258795', '+244974384524'],
   email: 'info@mahapservice.com',
@@ -115,7 +115,9 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

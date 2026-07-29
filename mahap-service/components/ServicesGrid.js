@@ -1,145 +1,148 @@
-// components/ServicesGrid.js — Grid de Serviços Premium (Server Component)
+// components/SolutionsGrid.js — Secção de Soluções Mahap Service
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Building2, Sofa, Car, Shield } from 'lucide-react';
+import { ArrowRight, Building2, Sofa, Car, Shield, SprayCan, GraduationCap, Lightbulb } from 'lucide-react';
 import { services } from '@/data/services';
+import { campaignImages } from '@/data/visuals';
+import CampaignImage from '@/components/CampaignImage';
+import ScrollReveal from './ScrollReveal';
 
 const iconMap = {
-  Building2,
-  Sofa,
-  Car,
-  Shield,
+  Building2, Sofa, Car, Shield,
 };
+
+const solutions = [
+  {
+    icon: Building2,
+    title: 'Comércio de Produtos Profissionais',
+    description: 'Produtos de limpeza, higienização, desinfeção e tratamento de pisos para ambientes profissionais e industriais.',
+    link: '/servicos',
+  },
+  {
+    icon: SprayCan,
+    title: 'Prestação de Serviços',
+    description: 'Limpeza profissional, higienização de ambientes, limpeza industrial, hospitalar e corporativa com equipas certificadas.',
+    link: '/servicos',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Formação Técnica',
+    description: 'Capacitação de equipas, utilização correta dos produtos e boas práticas de higiene profissional.',
+    link: '/contacto',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Consultoria Técnica',
+    description: 'Diagnóstico de necessidades, planeamento de processos de higienização e recomendações especializadas.',
+    link: '/contacto',
+  },
+];
+
+function serviceImage(slug) {
+  return campaignImages.byServiceSlug[slug] || services.find((s) => s.slug === slug)?.image;
+}
 
 export default function ServicesGrid() {
   return (
-    <section
-      id="servicos"
-      aria-labelledby="services-heading"
-      className="py-24 lg:py-32 bg-[#0F1923] relative z-0 overflow-hidden"
-    >
-      {/* BG decoration */}
-      <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#B8860B]/5 blur-[150px] pointer-events-none" />
+    <>
+      {/* Soluções Mahap Service */}
+      <section id="solucoes" aria-labelledby="solutions-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
+        <div className="container-xl">
+          <ScrollReveal variant="fadeUp">
+            <div className="max-w-2xl mb-16 lg:mb-20">
+              <p className="eyebrow mb-6">Soluções</p>
+              <h2 id="solutions-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
+                Soluções completas para cada necessidade.
+              </h2>
+              <p className="lead">
+                Da venda de produtos profissionais à formação técnica — oferecemos um ecossistema
+                completo de limpeza e higienização para empresas angolanas.
+              </p>
+            </div>
+          </ScrollReveal>
 
-      <div className="container-xl relative z-10">
-
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-          <div className="section-label mb-6 justify-center">Serviços</div>
-          <h2
-            id="services-heading"
-            className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight tracking-tight mb-5"
-          >
-            Soluções completas para{' '}
-            <span className="gradient-text">cada necessidade</span>
-          </h2>
-          <p className="text-white/50 text-lg leading-relaxed">
-            Quatro serviços especializados, todos suportados pelos produtos profissionais Spartan®, 
-            para garantir resultados que superam expectativas.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((service) => {
-            const Icon = iconMap[service.icon] || Shield;
-            return (
-              <article
-                key={service.id}
-                className="glass-light rounded-2xl overflow-hidden card-glow group"
-                aria-labelledby={`service-title-${service.id}`}
-              >
-                {/* Image */}
-                <div className="relative h-52 lg:h-64 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={`Serviço de ${service.title} pela Mahap Service em Luanda, Angola`}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
-                  />
-                  {/* Image overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1923]/80 via-[#0F1923]/20 to-transparent" aria-hidden="true" />
-
-                  {/* Service number */}
-                  <div className="absolute top-4 left-4">
-                    <span
-                      style={{ fontFamily: 'IBM Plex Mono, monospace' }}
-                      className="service-number bg-[#0F1923]/70 backdrop-blur-sm px-3 py-1.5 rounded-md border border-[#B8860B]/20"
-                      aria-hidden="true"
-                    >
-                      {service.number}
-                    </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {solutions.map((solution, idx) => (
+              <ScrollReveal key={solution.title} variant="fadeUp" delay={idx * 0.05}>
+                <Link href={solution.link} className="group block p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium">
+                  <div className="w-12 h-12 rounded-xl bg-[var(--brand-blue-soft)] flex items-center justify-center mb-5 group-hover:bg-[var(--brand-blue)] transition-all duration-300 group-hover:scale-105">
+                    <solution.icon size={22} className="text-[var(--brand-blue)] group-hover:text-white transition-colors duration-300" />
                   </div>
-
-                  {/* Icon badge */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-lg bg-[#B8860B]/15 backdrop-blur-sm border border-[#B8860B]/20 flex items-center justify-center">
-                    <Icon size={18} className="text-[#B8860B]" aria-hidden="true" />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 lg:p-7">
-                  <h3
-                    id={`service-title-${service.id}`}
-                    className="text-white text-xl font-semibold mb-3 leading-snug"
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-5">
-                    {service.shortDescription}
-                  </p>
-
-                  {/* Quick areas */}
-                  <ul className="flex flex-wrap gap-2 mb-6" role="list" aria-label={`Áreas abrangidas pelo serviço ${service.title}`}>
-                    {service.areas.slice(0, 3).map((area) => (
-                      <li key={area}>
-                        <span className="text-[11px] font-medium text-white/40 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">
-                          {area}
-                        </span>
-                      </li>
-                    ))}
-                    {service.areas.length > 3 && (
-                      <li>
-                        <span className="text-[11px] font-medium text-[#B8860B]/70 bg-[#B8860B]/5 border border-[#B8860B]/15 px-2.5 py-1 rounded-full">
-                          +{service.areas.length - 3} mais
-                        </span>
-                      </li>
-                    )}
-                  </ul>
-
-                  {/* CTA */}
-                  <Link
-                    href={`/servicos#${service.slug}`}
-                    className="inline-flex items-center gap-2 text-[#B8860B] text-sm font-semibold hover:text-[#D4A843] transition-colors duration-200 group/link focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 rounded"
-                    aria-label={`Saber mais sobre ${service.title}`}
-                  >
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">{solution.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">{solution.description}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-blue)]">
                     Saber mais
-                    <ArrowRight
-                      size={15}
-                      className="transition-transform duration-200 group-hover/link:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
+                    <ArrowRight size={14} className="icon-hover" aria-hidden />
+                  </span>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-14">
-          <Link
-            href="/servicos"
-            className="btn-outline"
-            aria-label="Ver todos os serviços Mahap Service"
-          >
-            Ver todos os serviços
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
+      {/* Serviços */}
+      <section id="servicos" aria-labelledby="services-heading" className="py-24 lg:py-32">
+        <div className="container-xl">
+          <ScrollReveal variant="fadeUp">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20">
+              <div className="max-w-xl">
+                <p className="eyebrow mb-6">Serviços</p>
+                <h2 id="services-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
+                  Quatro especialidades. Um único padrão de excelência.
+                </h2>
+                <p className="lead">
+                  Cada serviço é executado com produtos Spartan® e protocolos definidos —
+                  para que o resultado seja consistente, mensurável e duradouro.
+                </p>
+              </div>
+              <Link
+                href="/servicos"
+                className="btn-outline shrink-0 self-start lg:self-auto group"
+              >
+                Ver detalhes
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service, idx) => {
+              const IconComp = iconMap[service.icon] || Building2;
+              return (
+                <ScrollReveal key={service.id} variant="fadeUp" delay={idx * 0.05}>
+                  <Link href={`/servicos#${service.slug}`} className="group block rounded-2xl overflow-hidden bg-white border border-[var(--border-light)] card-hover card-premium">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-[var(--bg-subtle)]">
+                      <CampaignImage
+                        src={serviceImage(service.slug)}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-navy)]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-4 left-4">
+                        <div className="w-10 h-10 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-sm">
+                          <IconComp size={18} className="text-[var(--brand-blue)]" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xs font-bold text-[var(--brand-blue)] tabular-nums">{service.number}</span>
+                        <h3 className="text-lg font-bold text-[var(--text-primary)]">{service.title}</h3>
+                      </div>
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                        {service.shortDescription}
+                      </p>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

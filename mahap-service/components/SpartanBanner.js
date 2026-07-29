@@ -1,155 +1,72 @@
-// components/SpartanBanner.js — Banner Parceria Oficial Spartan® (Server Component)
+// components/SpartanBanner.js — Autoridade de marca, imagem visível
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Award, Globe, Leaf, ShieldCheck } from 'lucide-react';
-import { companyInfo } from '@/data/services';
+import { ArrowRight, Award, ShieldCheck, Wrench } from 'lucide-react';
+import CampaignImage from '@/components/CampaignImage';
+import ScrollReveal from './ScrollReveal';
+import RevealImage from '@/components/motion/RevealImage';
+import { campaignImages } from '@/data/visuals';
 
-const roles = [
-  {
-    icon: Award,
-    label: 'Distribuidor Oficial',
-    desc: 'Único distribuidor autorizado dos produtos Spartan® em Angola.',
-  },
-  {
-    icon: ShieldCheck,
-    label: 'Revendedor Oficial',
-    desc: 'Comercialização direta dos produtos profissionais originais.',
-  },
-  {
-    icon: Leaf,
-    label: 'Aplicador Oficial',
-    desc: 'Equipa treinada para aplicação técnica com máxima eficácia.',
-  },
+const credentials = [
+  { icon: Award, title: 'Distribuidor oficial', detail: 'Acesso directo à linha profissional Spartan® em Angola.' },
+  { icon: ShieldCheck, title: 'Revendedor autorizado', detail: 'Produtos originais para empresas e parceiros certificados.' },
+  { icon: Wrench, title: 'Aplicador certificado', detail: 'Equipas formadas para dosagem, segurança e performance.' },
 ];
 
 export default function SpartanBanner() {
   return (
-    <section
-      id="spartan"
-      aria-labelledby="spartan-heading"
-      className="py-24 lg:py-32 bg-[#0F1923] relative z-0 overflow-hidden"
-    >
-      {/* Background image */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <Image
-          src="/images/spartan-banner.jpg"
-          alt="Linha de produtos profissionais Spartan® utilizados pela Mahap Service"
-          fill
-          className="object-cover opacity-10"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1923] via-[#0F1923]/90 to-[#0F1923]/70" />
-      </div>
+    <section id="spartan" aria-labelledby="spartan-heading" className="section-dark py-24 lg:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)]/10 via-transparent to-transparent pointer-events-none" />
 
-      {/* Top separator */}
-      <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent z-10" />
-
-      <div className="container-xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Left column */}
-          <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#B8860B]/25 bg-[#B8860B]/10 mb-8">
-              <Globe size={13} className="text-[#B8860B]" aria-hidden="true" />
-              <span
-                style={{ fontFamily: 'IBM Plex Mono, monospace' }}
-                className="text-[#B8860B] text-[10px] font-medium tracking-[0.14em] uppercase"
-              >
-                Parceria Americana · Impacto Angolano
-              </span>
+      <div className="container-xl relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <ScrollReveal variant="fadeUp">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-xs font-semibold text-white/70 tracking-wide uppercase">Spartan® · Estados Unidos</span>
             </div>
 
-            <h2
-              id="spartan-heading"
-              className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight tracking-tight mb-6"
-            >
-              Orgulhosamente parceiros{' '}
-              <span className="gradient-text">Spartan®</span>{' '}
-              em Angola
+            <h2 id="spartan-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] text-white mb-6">
+              A química que as instalações mais exigentes escolhem.
             </h2>
-
-            <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-lg">
-              A Spartan® é uma marca americana de referência mundial em produtos químicos 
-              profissionais sustentáveis para limpeza, higienização e desinfestação. 
-              A Mahap Service é o único distribuidor, revendedor e aplicador oficial em Angola.
+            <p className="lead mb-12">
+              Spartan® é referência global em limpeza profissional sustentável.
+              A Mahap Service é o parceiro exclusivo em Angola — da venda à aplicação
+              técnica no terreno.
             </p>
 
-            {/* Spartan attributes */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {['Certificação Internacional', 'Fórmulas Biodegradáveis', 'Alta Performance', 'Segurança Comprovada'].map((attr) => (
-                <span
-                  key={attr}
-                  className="text-xs font-medium text-white/50 border border-white/10 px-3 py-1.5 rounded-full bg-white/5"
-                >
-                  {attr}
-                </span>
+            <div className="space-y-6 mb-12">
+              {credentials.map((item) => (
+                <div key={item.title} className="flex gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 transition-colors duration-300">
+                    <item.icon size={18} className="text-white/70" />
+                  </div>
+                  <div>
+                    <dt className="text-white font-semibold text-[0.9375rem] mb-1">{item.title}</dt>
+                    <dd className="text-white/45 text-sm leading-relaxed">{item.detail}</dd>
+                  </div>
+                </div>
               ))}
             </div>
 
-            <Link
-              href="/contacto"
-              className="btn-primary group"
-              aria-label="Solicitar mais informações sobre os produtos Spartan"
-            >
-              Conhecer os Produtos
-              <ArrowRight
-                size={17}
-                className="transition-transform duration-200 group-hover:translate-x-1"
-                aria-hidden="true"
-              />
+            <Link href="/contacto" className="btn-primary-light group">
+              Pedir informação Spartan®
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden />
             </Link>
-          </div>
+          </ScrollReveal>
 
-          {/* Right column — roles */}
-          <div className="flex flex-col gap-4">
-            {roles.map((role, idx) => {
-              const Icon = role.icon;
-              return (
-                <div
-                  key={role.label}
-                  className="flex items-start gap-5 p-6 glass rounded-xl card-glow group"
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl bg-[#B8860B]/10 border border-[#B8860B]/20 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#B8860B]/20 group-hover:border-[#B8860B]/40"
-                    aria-hidden="true"
-                  >
-                    <Icon size={22} className="text-[#B8860B]" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-1.5">
-                      <h3
-                        className="text-white font-semibold text-lg"
-                      >
-                        {role.label}
-                      </h3>
-                      <span
-                        style={{ fontFamily: 'IBM Plex Mono, monospace' }}
-                        className="text-[#B8860B] text-[10px] bg-[#B8860B]/10 px-2 py-0.5 rounded font-medium tracking-wider"
-                        aria-label="Número de credencial"
-                      >
-                        0{idx + 1}
-                      </span>
-                    </div>
-                    <p className="text-white/45 text-sm leading-relaxed">{role.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Tagline bottom */}
-            <div className="mt-2 text-center">
-              <p style={{ fontFamily: 'IBM Plex Mono, monospace' }} className="text-white/20 text-xs tracking-widest uppercase">
-                {companyInfo.spartan.brand} · {companyInfo.spartan.origin} · Angola
-              </p>
-            </div>
-          </div>
+          <RevealImage delay={0.1} className="relative aspect-[4/5] max-h-[520px] rounded-2xl">
+            <CampaignImage
+              src={campaignImages.spartan}
+              alt="Produtos e equipamento profissional Spartan utilizados pela Mahap Service"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverse)]/60 via-transparent to-transparent" aria-hidden />
+          </RevealImage>
         </div>
       </div>
-
-      {/* Bottom separator */}
-      <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/15 to-transparent z-10" />
     </section>
   );
 }
