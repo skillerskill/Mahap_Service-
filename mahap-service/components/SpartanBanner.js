@@ -20,7 +20,7 @@ export default function SpartanBanner() {
 
       <div className="container-xl relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          <ScrollReveal variant="fadeUp">
+          <ScrollReveal variant="fadeRight">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span className="text-xs font-semibold text-white/70 tracking-wide uppercase">Spartan® · Estados Unidos</span>

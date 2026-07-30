@@ -30,7 +30,7 @@ export default function About() {
     <section id="sobre" aria-labelledby="about-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          <RevealImage className="relative aspect-[4/5] max-h-[560px] w-full rounded-2xl">
+          <RevealImage className="relative aspect-[4/5] max-h-[560px] w-full rounded-2xl shadow-[0_20px_60px_rgba(12,27,51,0.08)]">
             <CampaignImage
               src={campaignImages.about}
               alt="Espaço corporativo limpo — resultado Mahap Service"
@@ -41,7 +41,7 @@ export default function About() {
           </RevealImage>
 
           <div>
-            <ScrollReveal variant="fadeUp">
+            <ScrollReveal variant="fadeLeft">
               <p className="eyebrow mb-6">Sobre nós</p>
               <h2 id="about-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
                 Construímos reputação em cada espaço que entregamos.
@@ -53,7 +53,7 @@ export default function About() {
               </p>
             </ScrollReveal>
 
-            <ScrollReveal variant="fadeUp" delay={0.08}>
+            <ScrollReveal variant="fadeLeft" delay={0.1}>
               <div className="space-y-6 mb-12">
                 {proofPoints.map((point) => (
                   <div key={point.title} className="flex gap-4 group">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 
 export default function RevealImage({
   children,
@@ -8,17 +8,24 @@ export default function RevealImage({
   delay = 0,
 }) {
   const ref = useRef(null);
-  const [animated, setAnimated] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    document.documentElement.classList.add('reveal-image-ready');
     const el = ref.current;
     if (!el) return;
+
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) { setAnimated(true); return; }
+    if (mq.matches) {
+      el.classList.add('reveal-in');
+      return;
+    }
+
+    el.style.animationDelay = `${delay}s`;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setAnimated(true);
+          el.classList.add('reveal-in');
           observer.unobserve(el);
         }
       },
@@ -26,27 +33,12 @@ export default function RevealImage({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  const style = animated
-    ? {
-        opacity: 1,
-        transform: 'scale(1)',
-        transitionProperty: 'opacity, transform',
-        transitionDuration: '1000ms',
-        transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        transitionDelay: `${delay * 1000}ms`,
-      }
-    : {
-        opacity: 1,
-        transform: 'scale(1)',
-      };
+  }, [delay]);
 
   return (
     <div
       ref={ref}
       className={`reveal-image ${className}`}
-      style={style}
     >
       <div className="reveal-image__inner">
         {children}

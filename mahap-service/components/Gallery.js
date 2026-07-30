@@ -32,7 +32,7 @@ export default function Gallery() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {galleryItems.map((item, idx) => (
-            <ScrollReveal key={idx} variant="scaleIn" delay={idx * 0.05} className={item.span}>
+            <ScrollReveal key={idx} variant="scaleIn" delay={idx * 0.07} className={item.span}>
               <RevealImage className="relative aspect-square group h-full rounded-2xl bg-[var(--bg-subtle)]">
                 <CampaignImage
                   src={item.src}

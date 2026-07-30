@@ -1,16 +1,14 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 
-const variantStyles = {
-  fadeUp:    { from: 'translateY(40px)',  to: 'none' },
-  fadeDown:  { from: 'translateY(-40px)', to: 'none' },
-  fadeLeft:  { from: 'translateX(-40px)', to: 'none' },
-  fadeRight: { from: 'translateX(40px)',  to: 'none' },
-  scaleIn:   { from: 'scale(0.92)',       to: 'none' },
-  fadeIn:    { from: 'none',              to: 'none' },
-  blurIn:    { from: 'blur(8px)',         to: 'none' },
-};
+let ready = false;
+
+function markReady() {
+  if (ready) return;
+  ready = true;
+  document.documentElement.classList.add('sr-ready');
+}
 
 export default function AnimatedSection({
   children,
@@ -21,17 +19,25 @@ export default function AnimatedSection({
   ...props
 }) {
   const ref = useRef(null);
-  const [animated, setAnimated] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    markReady();
     const el = ref.current;
     if (!el) return;
+
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) { setAnimated(true); return; }
+    if (mq.matches) {
+      el.classList.add('sr-in');
+      return;
+    }
+
+    el.style.animationDuration = `${duration}s`;
+    el.style.animationDelay = `${delay}s`;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setAnimated(true);
+          el.classList.add('sr-in');
           observer.unobserve(el);
         }
       },
@@ -39,32 +45,15 @@ export default function AnimatedSection({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  const v = variantStyles[variant] || variantStyles.fadeUp;
-
-  let style;
-  if (animated) {
-    style = {
-      opacity: 1,
-      transform: v.to,
-      filter: 'none',
-      transitionProperty: 'opacity, transform, filter',
-      transitionDuration: `${duration * 1000}ms`,
-      transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-      transitionDelay: `${delay * 1000}ms`,
-    };
-  } else {
-    style = {
-      opacity: 1,
-      transform: v.from,
-      filter: variant === 'blurIn' ? 'blur(8px)' : undefined,
-      transition: 'none',
-    };
-  }
+  }, [delay, duration]);
 
   return (
-    <div ref={ref} className={className} style={style} {...props}>
+    <div
+      ref={ref}
+      className={`sr ${className}`}
+      data-variant={variant}
+      {...props}
+    >
       {children}
     </div>
   );

@@ -33,7 +33,7 @@ export default function Segments() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {segments.map((segment, idx) => (
-            <ScrollReveal key={segment.label} variant="fadeUp" delay={idx * 0.03}>
+            <ScrollReveal key={segment.label} variant="scaleIn" delay={idx * 0.05}>
               <div className="group flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium">
                 <div className="w-14 h-14 rounded-2xl bg-[var(--brand-blue-soft)] flex items-center justify-center mb-4 group-hover:bg-[var(--brand-blue)] transition-all duration-300 group-hover:scale-105">
                   <segment.icon size={24} className="text-[var(--brand-blue)] group-hover:text-white transition-colors duration-300" />

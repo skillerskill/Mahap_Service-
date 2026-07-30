@@ -14,9 +14,12 @@ export default function CTASection() {
     <section id="orcamento" aria-labelledby="cta-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl">
         <ScrollReveal variant="fadeUp">
-          <div className="relative rounded-3xl overflow-hidden bg-[var(--brand-navy)] p-10 lg:p-16">
+          <div className="relative rounded-3xl overflow-hidden bg-[var(--brand-navy)] p-10 lg:p-16 group">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)]/20 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--brand-blue)]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--brand-blue)]/10 rounded-full blur-3xl pointer-events-none transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent group-hover:translate-x-full transition-transform duration-[1.5s] ease-out" />
+            </div>
 
             <div className="relative lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
               <div className="lg:col-span-7 mb-10 lg:mb-0">
