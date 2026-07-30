@@ -59,8 +59,8 @@ export default function Navbar() {
           <Image
             src="/images/mahap.png"
             alt=""
-            width={36}
-            height={36}
+            width={56}
+            height={56}
             className="object-contain"
             priority
           />
