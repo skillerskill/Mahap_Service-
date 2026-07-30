@@ -164,7 +164,8 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
-}
+    }
+  }
 
   /* ===== ORANGE ACCENT UTILITIES ===== */
   .text-orange { color: var(--brand-orange); }
@@ -193,8 +194,6 @@
   .focus-orange:focus-visible {
     outline: 2px solid var(--brand-orange);
     outline-offset: 2px;
-  }
-}
   }
 }
 
@@ -359,7 +358,7 @@
 
   .btn-orange-outline {
     display: inline-flex;
-    align-items: center
+    align-items: center;
     justify-content: center;
     gap: 0.5rem;
     padding: 0.9375rem 1.75rem;
