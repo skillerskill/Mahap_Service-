@@ -39,22 +39,20 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-xl flex items-center justify-between h-[72px]" aria-label="Navegação principal">
-        <Link
+<Link
           href="/"
           className="flex items-center gap-3 group"
           aria-label="Mahap Service — início"
           onClick={closeMenu}
         >
-          <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-white ring-1 ring-[var(--border-light)] transition-shadow group-hover:shadow-md">
-            <Image
-              src="/images/mahap.jpg"
-              alt=""
-              width={36}
-              height={36}
-              className="object-contain"
-              priority
-            />
-          </div>
+          <Image
+            src="/images/mahap.png"
+            alt=""
+            width={36}
+            height={36}
+            className="object-contain"
+            priority
+          />
           <div className="flex flex-col">
             <span className="font-bold text-[0.9375rem] tracking-tight text-[var(--text-primary)] leading-tight">
               Mahap Service

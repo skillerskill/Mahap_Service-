@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
               <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white">
-                <Image src="/images/mahap.jpg" alt="" width={40} height={40} className="object-contain" />
+                <Image src="/images/mahap.png" alt="" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-white text-base leading-tight">Mahap Service</span>

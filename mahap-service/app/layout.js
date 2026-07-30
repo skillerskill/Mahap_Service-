@@ -29,6 +29,10 @@ export const metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'pt_AO',
@@ -39,7 +43,7 @@ export const metadata = {
       'Distribuidor e aplicador oficial dos produtos Spartan® em Angola. Limpeza geral, estofos, detailing automóvel e controlo de pragas em Luanda.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/mahap.png',
         width: 1200,
         height: 630,
         alt: 'Mahap Service — Serviços de Limpeza Profissional em Angola',
@@ -51,7 +55,7 @@ export const metadata = {
     title: 'Mahap Service — Limpeza Profissional & Aplicador Oficial Spartan® em Angola',
     description:
       'Distribuidor e aplicador oficial dos produtos Spartan® em Angola. Limpeza geral, estofos, detailing automóvel e controlo de pragas em Luanda.',
-    images: ['/og-image.jpg'],
+    images: ['/images/mahap.png'],
   },
   alternates: {
     canonical: 'https://mahapservice.com',
@@ -110,6 +114,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-AO">
       <head>
+        <meta name="theme-color" content="#0C1B33" />
+        <meta name="msapplication-TileColor" content="#0C1B33" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
