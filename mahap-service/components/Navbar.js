@@ -56,11 +56,11 @@ export default function Navbar() {
           aria-label="Mahap Service — início"
           onClick={closeMenu}
         >
-          <Image
+<Image
             src="/images/mahap.png"
             alt=""
-            width={56}
-            height={56}
+            width={64}
+            height={64}
             className="object-contain"
             priority
           />

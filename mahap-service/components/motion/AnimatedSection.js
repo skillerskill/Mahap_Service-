@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
 
 let ready = false;
 
@@ -16,9 +16,12 @@ export default function AnimatedSection({
   delay = 0,
   duration = 0.7,
   className = '',
+  amount = 0.1,
+  once = true,
   ...props
 }) {
   const ref = useRef(null);
+  const [isInView, setIsInView] = useState(false);
 
   useLayoutEffect(() => {
     markReady();
@@ -34,18 +37,31 @@ export default function AnimatedSection({
     el.style.animationDuration = `${duration}s`;
     el.style.animationDelay = `${delay}s`;
 
+    // Check if already in view (for desktop where element loads already visible)
+    const rect = el.getBoundingClientRect();
+    const isInitiallyInView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (isInitiallyInView) {
+      setTimeout(() => {
+        el.classList.add('sr-in');
+      }, delay * 1000);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add('sr-in');
-          observer.unobserve(el);
+          if (once) observer.unobserve(el);
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -20px 0px' 
+      }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay, duration]);
+  }, [delay, duration, once]);
 
   return (
     <div
