@@ -117,6 +117,11 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="theme-color" content="#0C1B33" />
         <meta name="msapplication-TileColor" content="#0C1B33" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1581578731548-c64695cc6952?fm=jpg&q=60&w=1260&auto=format&fit=crop" fetchPriority="high" />
         <link rel="stylesheet" href="/swiper.min.css" />
         <script
           type="application/ld+json"

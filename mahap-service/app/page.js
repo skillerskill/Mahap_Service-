@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import About from '@/components/About';
-
 const SpartanBanner = dynamic(() => import('@/components/SpartanBanner'), { loading: () => <div className="min-h-[400px]" /> });
 const ServicesGrid = dynamic(() => import('@/components/ServicesGrid'), { loading: () => <div className="min-h-[400px]" /> });
 const Segments = dynamic(() => import('@/components/Segments'), { loading: () => <div className="min-h-[400px]" /> });

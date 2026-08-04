@@ -12,13 +12,7 @@ export default function HeroSlider() {
   const [ready, setReady] = useState(false);
   const swiperRef = useRef(null);
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: delayed animation start
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!mq.matches) {
-      const timer = setTimeout(() => setReady(true), 100);
-      return () => clearTimeout(timer);
-    }
     setReady(true);
   }, []);
 

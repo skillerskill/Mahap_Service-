@@ -10,6 +10,7 @@ export default function CampaignImage({
   width,
   height,
   sizes,
+  quality = 75,
 }) {
   const remote = isRemoteSrc(src);
 
@@ -22,6 +23,7 @@ export default function CampaignImage({
         priority={priority}
         className={className}
         sizes={sizes}
+        quality={remote ? undefined : quality}
         unoptimized={remote}
       />
     );
@@ -36,6 +38,7 @@ export default function CampaignImage({
       priority={priority}
       className={className}
       sizes={sizes}
+      quality={remote ? undefined : quality}
       unoptimized={remote}
     />
   );

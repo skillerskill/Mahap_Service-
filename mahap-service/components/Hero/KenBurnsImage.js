@@ -23,6 +23,7 @@ export default function KenBurnsImage({ src, alt, isActive, variant = 0 }) {
           priority={variant === 0}
           className="object-cover"
           sizes="100vw"
+          quality={60}
         />
       </div>
     </div>

@@ -12,8 +12,12 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
   },
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
   allowedDevOrigins: ['192.168.56.1'],
   turbopack: {},
   webpack: (config) => {
