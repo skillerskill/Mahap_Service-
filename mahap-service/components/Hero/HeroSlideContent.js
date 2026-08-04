@@ -17,12 +17,12 @@ export default function HeroSlideContent({ slide, isActive }) {
   }, [isActive]);
 
   return (
-    <div className="absolute inset-0 flex items-end pb-24 sm:items-center sm:pb-0 sm:justify-start">
+    <div className="absolute inset-0 flex items-end pb-20 sm:items-center sm:pb-0 sm:justify-start">
       <div className="container-xl relative z-10 w-full">
         <div className="max-w-2xl">
           {slide.eyebrow && (
             <p
-              className={`eyebrow mb-6 text-white/80 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+              className={`eyebrow mb-4 sm:mb-6 text-white/80 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
               style={ready ? { animationDelay: '0.1s' } : undefined}
             >
               {slide.eyebrow}
@@ -31,7 +31,7 @@ export default function HeroSlideContent({ slide, isActive }) {
 
           {slide.title && (
             <h1
-              className={`text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-white mb-6 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+              className={`text-[clamp(1.75rem,5vw,3.75rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-white mb-4 sm:mb-6 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
               style={ready ? { animationDelay: '0.2s' } : undefined}
             >
               {slide.title}
@@ -40,7 +40,7 @@ export default function HeroSlideContent({ slide, isActive }) {
 
           {slide.description && (
             <p
-              className={`text-[1.0625rem] text-white/75 leading-[1.7] max-w-xl mb-10 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+              className={`text-[0.9375rem] sm:text-[1.0625rem] text-white/75 leading-[1.7] max-w-xl mb-6 sm:mb-10 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
               style={ready ? { animationDelay: '0.35s' } : undefined}
             >
               {slide.description}
@@ -48,7 +48,7 @@ export default function HeroSlideContent({ slide, isActive }) {
           )}
 
           <div
-            className={`flex flex-col sm:flex-row items-start gap-4 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+            className={`flex flex-col sm:flex-row items-start gap-3 sm:gap-4 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
             style={ready ? { animationDelay: '0.5s' } : undefined}
           >
             {slide.ctaPrimary && (

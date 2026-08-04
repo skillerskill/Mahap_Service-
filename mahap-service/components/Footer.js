@@ -50,13 +50,13 @@ export default function Footer() {
           <ScrollReveal variant="fadeLeft" delay={0.2} className="md:col-span-4">
             <p className="text-[0.6875rem] font-bold tracking-[0.14em] uppercase text-white/30 mb-5">Contacto</p>
             <address className="not-italic text-sm text-white/50 space-y-3 leading-relaxed">
-              <a href={`tel:${companyInfo.phone1Raw}`} className="block hover:text-white transition-colors duration-300 tabular-nums">
+              <a href={`tel:${companyInfo.phone1Raw}`} className="block hover:text-white transition-colors duration-300 tabular-nums break-all">
                 {companyInfo.phone1}
               </a>
-              <a href={`tel:${companyInfo.phone2Raw}`} className="block hover:text-white transition-colors duration-300 tabular-nums">
+              <a href={`tel:${companyInfo.phone2Raw}`} className="block hover:text-white transition-colors duration-300 tabular-nums break-all">
                 {companyInfo.phone2}
               </a>
-              <a href={`mailto:${companyInfo.email}`} className="block hover:text-white transition-colors duration-300">
+              <a href={`mailto:${companyInfo.email}`} className="block hover:text-white transition-colors duration-300 break-all">
                 {companyInfo.email}
               </a>
               <span className="block text-white/35 text-xs leading-relaxed pt-1">

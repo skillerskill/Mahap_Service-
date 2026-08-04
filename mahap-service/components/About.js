@@ -28,9 +28,9 @@ const proofPoints = [
 
 export default function About() {
   return (
-    <section id="sobre" aria-labelledby="about-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]" style={{ scrollMarginTop: '72px' }}>
+    <section id="sobre" aria-labelledby="about-heading" className="py-16 sm:py-24 lg:py-32 bg-[var(--bg-elevated)]" style={{ scrollMarginTop: '72px' }}>
       <div className="container-xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
           <RevealImage className="relative aspect-[4/5] max-h-[560px] w-full rounded-2xl shadow-[0_20px_60px_rgba(12,27,51,0.08)]">
             <CampaignImage
               src={campaignImages.about}

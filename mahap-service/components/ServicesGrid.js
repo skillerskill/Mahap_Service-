@@ -47,7 +47,7 @@ export default function ServicesGrid() {
   return (
     <>
       {/* Soluções Mahap Service */}
-      <section id="solucoes" aria-labelledby="solutions-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
+      <section id="solucoes" aria-labelledby="solutions-heading" className="py-16 sm:py-24 lg:py-32 bg-[var(--bg-elevated)]">
         <div className="container-xl">
           <SectionHeader
             eyebrow="Soluções"
@@ -59,7 +59,7 @@ export default function ServicesGrid() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {solutions.map((solution, idx) => (
               <ScrollReveal key={solution.title} variant="fadeUp" delay={idx * 0.05}>
-                <Link href={solution.link} className="group block p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium">
+                  <Link href={solution.link} className="group block p-5 sm:p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium">
                   <div className="w-12 h-12 rounded-xl bg-[var(--brand-blue-soft)] flex items-center justify-center mb-5 group-hover:bg-[var(--brand-blue)] transition-all duration-300 group-hover:scale-105">
                     <solution.icon size={22} className="text-[var(--brand-blue)] group-hover:text-white transition-colors duration-300" />
                   </div>
@@ -77,7 +77,7 @@ export default function ServicesGrid() {
       </section>
 
       {/* Serviços */}
-      <section id="servicos" aria-labelledby="services-heading" className="py-24 lg:py-32">
+      <section id="servicos" aria-labelledby="services-heading" className="py-16 sm:py-24 lg:py-32">
         <div className="container-xl">
           <ScrollReveal variant="fadeUp">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20">

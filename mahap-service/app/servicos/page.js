@@ -50,9 +50,9 @@ export default function ServicosPage() {
           <section
             key={service.id}
             id={service.slug}
-            className={`py-20 lg:py-28 ${idx % 2 === 0 ? 'bg-[var(--bg-elevated)]' : 'bg-white'}`}
+            className={`py-14 sm:py-20 lg:py-28 ${idx % 2 === 0 ? 'bg-[var(--bg-elevated)]' : 'bg-white'}`}
           >
-            <div className="container-xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="container-xl grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
               <RevealImage className={`relative aspect-[16/11] rounded-2xl ${reversed ? 'lg:order-2' : ''}`}>
                 <CampaignImage
                   src={imageFor(service.slug)}
@@ -76,7 +76,7 @@ export default function ServicosPage() {
                 </ScrollReveal>
 
                 <ScrollReveal variant="fadeUp" delay={0.1}>
-                  <div className="grid sm:grid-cols-2 gap-8 mb-10 text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-10 text-sm">
                     <div>
                       <p className="text-[0.6875rem] font-bold tracking-[0.14em] uppercase text-[var(--text-muted)] mb-4">Abrangência</p>
                       <ul className="space-y-2.5 text-[var(--text-secondary)]">

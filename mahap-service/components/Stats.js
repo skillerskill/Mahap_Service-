@@ -11,9 +11,9 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section aria-label="Resultados Mahap Service" className="py-16 lg:py-20 bg-white border-y border-[var(--border-light)]">
+    <section aria-label="Resultados Mahap Service" className="py-10 sm:py-16 lg:py-20 bg-white border-y border-[var(--border-light)]">
       <div className="container-xl">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {stats.map((stat, idx) => (
             <AnimatedCounter
               key={stat.label}

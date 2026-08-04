@@ -126,9 +126,9 @@ export default function ContactoContent() {
         description="Descreva o espaço e o serviço. Respondemos em 24 horas."
       />
 
-      <section className="pb-24 lg:pb-32 bg-[var(--bg-elevated)]">
-        <div className="container-xl grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
-          <ScrollReveal variant="fadeUp" className="lg:col-span-7 bg-white border border-[var(--border-light)] rounded-2xl p-8 lg:p-10 shadow-sm">
+      <section className="pb-16 sm:pb-24 lg:pb-32 bg-[var(--bg-elevated)]">
+        <div className="container-xl grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-20">
+          <ScrollReveal variant="fadeUp" className="lg:col-span-7 bg-white border border-[var(--border-light)] rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm">
             <h2 className="text-xl font-bold mb-8 text-[var(--text-primary)]">Enviar pedido</h2>
             <ContactForm />
           </ScrollReveal>
@@ -163,7 +163,7 @@ export default function ContactoContent() {
             </ScrollReveal>
 
             <ScrollReveal variant="fadeUp" delay={0.25}>
-              <div className="rounded-2xl overflow-hidden h-52 border border-[var(--border-light)]">
+              <div className="rounded-2xl overflow-hidden h-52 sm:h-64 border border-[var(--border-light)]">
                 <iframe
                   title="Mahap Service — Luanda"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15771.3!2d13.23!3d-8.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f15cdc8d2c7d%3A0x850c1c6fb4782990!2sPrend%C3%A2%2C%20Luanda%2C%20Angola!5e0!3m2!1spt!2sao!4v1234567890"

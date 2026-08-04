@@ -56,7 +56,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
+    <section id="faq" aria-labelledby="faq-heading" className="py-16 sm:py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl max-w-3xl mx-auto">
         <SectionHeader
           eyebrow="FAQ"

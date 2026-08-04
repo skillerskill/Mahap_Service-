@@ -11,10 +11,10 @@ export default function CTASection() {
   )}`;
 
   return (
-    <section id="orcamento" aria-labelledby="cta-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
+    <section id="orcamento" aria-labelledby="cta-heading" className="py-16 sm:py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl">
         <ScrollReveal variant="fadeUp">
-          <div className="relative rounded-3xl overflow-hidden bg-[var(--brand-navy)] p-10 lg:p-16 group">
+          <div className="relative rounded-3xl overflow-hidden bg-[var(--brand-navy)] p-6 sm:p-10 lg:p-16 group">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)]/20 via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--brand-blue)]/10 rounded-full blur-3xl pointer-events-none transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -47,15 +47,15 @@ export default function CTASection() {
 
                 <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
                   <div className="flex items-center gap-3 text-sm text-white/40">
-                    <Phone size={14} className="text-white/30" />
-                    <span className="tabular-nums">{companyInfo.phone1}</span>
+                    <Phone size={14} className="text-white/30 shrink-0" />
+                    <span className="tabular-nums break-all">{companyInfo.phone1}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-white/40">
-                    <Mail size={14} className="text-white/30" />
-                    <span>{companyInfo.email}</span>
+                    <Mail size={14} className="text-white/30 shrink-0" />
+                    <span className="break-all">{companyInfo.email}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-white/40">
-                    <MapPin size={14} className="text-white/30" />
+                    <MapPin size={14} className="text-white/30 shrink-0" />
                     <span>{companyInfo.address.city}, {companyInfo.address.country}</span>
                   </div>
                 </div>

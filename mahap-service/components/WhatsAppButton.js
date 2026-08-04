@@ -29,7 +29,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
-      className={`fixed bottom-6 right-6 z-50 group ${
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group ${
         visible
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'

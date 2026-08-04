@@ -15,11 +15,11 @@ const credentials = [
 
 export default function SpartanBanner() {
   return (
-    <section id="spartan" aria-labelledby="spartan-heading" className="section-dark py-24 lg:py-32 relative overflow-hidden">
+    <section id="spartan" aria-labelledby="spartan-heading" className="section-dark py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)]/10 via-transparent to-transparent pointer-events-none" />
 
       <div className="container-xl relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
           <ScrollReveal variant="fadeRight">
             <h2 id="spartan-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] text-white mb-6">
               A química que as instalações mais exigentes escolhem.
