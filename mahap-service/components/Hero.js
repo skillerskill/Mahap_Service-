@@ -7,6 +7,7 @@ export default function Hero() {
     <section
       id="inicio"
       aria-label="Mahap Service — limpeza profissional em Angola"
+      style={{ scrollMarginTop: '0px' }}
     >
       <HeroSlider />
     </section>
