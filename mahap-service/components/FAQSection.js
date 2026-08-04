@@ -1,18 +1,27 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/data/services';
 import ScrollReveal from './ScrollReveal';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 function FAQItem({ faq, idx, isOpen, onToggle }) {
   const contentRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    }
+  }, [isOpen]);
 
   return (
     <div>
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
+        aria-controls={`faq-answer-${idx}`}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
         <span className="font-semibold text-[var(--text-primary)] pr-4 group-hover:text-[var(--brand-blue)] transition-colors duration-300">
@@ -27,9 +36,10 @@ function FAQItem({ faq, idx, isOpen, onToggle }) {
       </button>
       <div
         ref={contentRef}
+        id={`faq-answer-${idx}`}
         className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
         style={{
-          maxHeight: isOpen ? `${contentRef.current?.scrollHeight || 200}px` : '0px',
+          maxHeight: isOpen ? `${height}px` : '0px',
           opacity: isOpen ? 1 : 0,
           transform: isOpen ? 'translateY(0)' : 'translateY(-8px)',
         }}
@@ -48,14 +58,12 @@ export default function FAQSection() {
   return (
     <section id="faq" aria-labelledby="faq-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl max-w-3xl mx-auto">
-        <ScrollReveal variant="blurIn">
-          <div className="text-center mb-12">
-            <p className="eyebrow mb-6 justify-center">FAQ</p>
-            <h2 id="faq-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-4">
-              Perguntas frequentes
-            </h2>
-          </div>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="FAQ"
+          title="Perguntas frequentes"
+          align="center"
+          className="mb-12"
+        />
 
         <ScrollReveal variant="slideUpBounce" delay={0.1}>
           <div className="divide-y divide-[var(--border-light)] border-y border-[var(--border-light)]">

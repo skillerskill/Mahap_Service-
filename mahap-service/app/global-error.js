@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { AlertOctagon, RefreshCw } from 'lucide-react';
 
 export default function GlobalError({ error, reset }) {
   useEffect(() => {
@@ -9,15 +10,20 @@ export default function GlobalError({ error, reset }) {
 
   return (
     <html lang="pt-AO">
-      <body>
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <body style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+        <div className="min-h-screen flex items-center justify-center bg-[var(--bg-elevated)] px-4">
           <div className="text-center max-w-md">
-            <h1 className="text-2xl font-bold text-red-600 mb-4">Erro crítico</h1>
-            <p className="text-gray-600 mb-6">{error?.message || 'Erro desconhecido'}</p>
-            <button
-              onClick={reset}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
+            <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-6">
+              <AlertOctagon size={28} className="text-red-500" />
+            </div>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-3">
+              Erro crítico
+            </h1>
+            <p className="text-[var(--text-secondary)] text-sm mb-8 leading-relaxed">
+              {error?.message || 'Ocorreu um erro crítico na aplicação.'}
+            </p>
+            <button onClick={reset} className="btn-primary group">
+              <RefreshCw size={16} className="transition-transform group-hover:rotate-180" aria-hidden />
               Recarregar página
             </button>
           </div>

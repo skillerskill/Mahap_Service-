@@ -3,22 +3,21 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 import { companyInfo } from '@/data/services';
 import { navLinks } from '@/data/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     let rafId;
     const handleScroll = () => {
       rafId = requestAnimationFrame(() => {
-        const y = window.scrollY;
-        setScrollY(y);
-        setIsScrolled(y > 8);
+        setIsScrolled(window.scrollY > 8);
       });
     };
     handleScroll();
@@ -38,7 +37,17 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const closeMenu = () => setIsOpen(false);
+
+  const isActive = (href) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   return (
     <header
@@ -56,7 +65,7 @@ export default function Navbar() {
           aria-label="Mahap Service — início"
           onClick={closeMenu}
         >
-<Image
+          <Image
             src="/images/mahap.png"
             alt=""
             width={64}
@@ -79,9 +88,16 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="nav-link text-[0.875rem] font-medium text-[var(--text-secondary)] hover:text-[var(--brand-blue)] transition-colors duration-300 py-1"
+                className={`nav-link text-[0.875rem] font-medium transition-colors duration-300 py-1 ${
+                  isActive(link.href)
+                    ? 'text-[var(--brand-blue)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]'
+                }`}
               >
                 {link.label}
+                {isActive(link.href) && (
+                  <span className="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-[var(--brand-blue)] rounded-full" aria-hidden />
+                )}
               </Link>
             </li>
           ))}
@@ -113,10 +129,10 @@ export default function Navbar() {
       </nav>
 
       <div
-id="mobile-menu"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
-            isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-          } bg-white border-b border-[var(--border-light)] shadow-lg`}
+        id="mobile-menu"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
+          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        } bg-white border-b border-[var(--border-light)] shadow-lg`}
       >
         <div className="container-xl py-6 flex flex-col gap-1">
           {navLinks.map((link, idx) => (
@@ -124,7 +140,11 @@ id="mobile-menu"
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="py-3.5 text-[var(--text-primary)] font-medium text-[0.9375rem] hover:text-[var(--brand-blue)] transition-colors border-b border-[var(--border-light)] last:border-0"
+              className={`py-3.5 font-medium text-[0.9375rem] transition-colors border-b border-[var(--border-light)] last:border-0 ${
+                isActive(link.href)
+                  ? 'text-[var(--brand-blue)]'
+                  : 'text-[var(--text-primary)] hover:text-[var(--brand-blue)]'
+              }`}
               style={{ transitionDelay: isOpen ? `${idx * 50}ms` : '0ms' }}
             >
               {link.label}

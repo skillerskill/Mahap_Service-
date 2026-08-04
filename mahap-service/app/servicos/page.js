@@ -1,17 +1,19 @@
 // app/servicos/page.js
 
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ArrowRight, Building2, Sofa, Car, Shield } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import CTASection from '@/components/CTASection';
 import CampaignImage from '@/components/CampaignImage';
 import ScrollReveal from '@/components/ScrollReveal';
 import RevealImage from '@/components/motion/RevealImage';
 import PageHero from '@/components/motion/PageHero';
 import { services } from '@/data/services';
 import { campaignImages } from '@/data/visuals';
-import FAQAccordion from './FAQAccordion';
+
+const CTASection = dynamic(() => import('@/components/CTASection'), { loading: () => <div className="min-h-[300px]" /> });
+const Footer = dynamic(() => import('@/components/Footer'), { loading: () => <div className="min-h-[200px]" /> });
+const FAQAccordion = dynamic(() => import('./FAQAccordion'));
 
 export const metadata = {
   title: 'Serviços de Limpeza Profissional em Angola',
@@ -116,8 +118,10 @@ export default function ServicosPage() {
       <section className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
         <div className="container-xl max-w-2xl mx-auto">
           <ScrollReveal variant="blurIn">
-            <p className="eyebrow mb-6 text-center justify-center">FAQ</p>
-            <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] text-center mb-12">Perguntas frequentes</h2>
+            <div className="text-center mb-12">
+              <p className="eyebrow mb-6 justify-center">FAQ</p>
+              <h2 className="text-[clamp(1.75rem,3vw,2.25rem)]">Perguntas frequentes</h2>
+            </div>
           </ScrollReveal>
           <ScrollReveal variant="fadeUp" delay={0.1}>
             <FAQAccordion />

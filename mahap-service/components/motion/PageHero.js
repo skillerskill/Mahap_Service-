@@ -4,6 +4,7 @@ import { useLayoutEffect, useState } from 'react';
 
 export default function PageHero({ eyebrow, title, description, children, className = '' }) {
   const [ready, setReady] = useState(false);
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: mount animation trigger
   useLayoutEffect(() => { setReady(true); }, []);
 
   return (

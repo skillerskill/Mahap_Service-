@@ -1,6 +1,7 @@
 // app/layout.js — Root Layout com Metadata Global
 
 import './globals.css';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata = {
   metadataBase: new URL('https://mahapservice.com'),
@@ -118,13 +119,21 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#0C1B33" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body>
+        <a
+          href="#inicio"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--brand-blue)] focus:text-white focus:rounded-lg focus:outline-none"
+        >
+          Ir para o conteúdo principal
+        </a>
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

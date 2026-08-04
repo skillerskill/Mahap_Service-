@@ -2,6 +2,7 @@
 
 import { Star, Quote } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 const testimonials = [
   {
@@ -31,14 +32,12 @@ export default function Testimonials() {
   return (
     <section id="testemunhos" aria-labelledby="testimonials-heading" className="py-24 lg:py-32">
       <div className="container-xl">
-        <ScrollReveal variant="fadeUp">
-          <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-            <p className="eyebrow mb-6 justify-center">Testemunhos</p>
-            <h2 id="testimonials-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
-              O que dizem os nossos clientes.
-            </h2>
-          </div>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="Testemunhos"
+          title="O que dizem os nossos clientes."
+          align="center"
+          className="mb-16 lg:mb-20"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, idx) => (

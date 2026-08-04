@@ -5,6 +5,7 @@ import { ArrowRight, Target, Users, Leaf } from 'lucide-react';
 import CampaignImage from '@/components/CampaignImage';
 import ScrollReveal from './ScrollReveal';
 import RevealImage from '@/components/motion/RevealImage';
+import SectionHeader from '@/components/ui/SectionHeader';
 import { campaignImages } from '@/data/visuals';
 
 const proofPoints = [
@@ -41,20 +42,14 @@ export default function About() {
           </RevealImage>
 
           <div>
-            <ScrollReveal variant="fadeLeft">
-              <p className="eyebrow mb-6">Sobre nós</p>
-              <h2 id="about-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
-                Construímos reputação em cada espaço que entregamos.
-              </h2>
-              <p className="lead mb-10">
-                A Mahap Service existe para elevar o padrão de higienização em Angola.
-                Com acesso directo à linha Spartan®, combinamos química de referência
-                mundial com execução local rigorosa — em empresas, condomínios e residências.
-              </p>
-            </ScrollReveal>
+            <SectionHeader
+              eyebrow="Sobre nós"
+              title="Construímos reputação em cada espaço que entregamos."
+              description="A Mahap Service existe para elevar o padrão de higienização em Angola. Com acesso directo à linha Spartan®, combinamos química de referência mundial com execução local rigorosa — em empresas, condomínios e residências."
+            />
 
             <ScrollReveal variant="fadeLeft" delay={0.1}>
-              <div className="space-y-6 mb-12">
+              <div className="space-y-6 mb-12 mt-10">
                 {proofPoints.map((point) => (
                   <div key={point.title} className="flex gap-4 group">
                     <div className="w-10 h-10 rounded-xl bg-[var(--brand-blue-soft)] flex items-center justify-center shrink-0 group-hover:bg-[var(--brand-blue)] transition-all duration-300 group-hover:scale-105">

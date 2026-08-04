@@ -1,8 +1,10 @@
 // app/contacto/page.js — Página de Contacto (Server Component wrapper)
 
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ContactoContent from './ContactoContent';
+
+const Footer = dynamic(() => import('@/components/Footer'), { loading: () => <div className="min-h-[200px]" /> });
+const ContactoContent = dynamic(() => import('./ContactoContent'));
 
 export const metadata = {
   title: 'Contacto — Solicitar Orçamento Gratuito',

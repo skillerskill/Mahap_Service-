@@ -3,6 +3,7 @@
 import ScrollReveal from './ScrollReveal';
 import RevealImage from '@/components/motion/RevealImage';
 import CampaignImage from '@/components/CampaignImage';
+import SectionHeader from '@/components/ui/SectionHeader';
 import { campaignImages } from '@/data/visuals';
 
 const galleryItems = [
@@ -17,18 +18,13 @@ export default function Gallery() {
   return (
     <section id="galeria" aria-labelledby="gallery-heading" className="py-24 lg:py-32">
       <div className="container-xl">
-        <ScrollReveal variant="fadeUp">
-          <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-            <p className="eyebrow mb-6 justify-center">Galeria</p>
-            <h2 id="gallery-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
-              Resultados que falam por si.
-            </h2>
-            <p className="lead mx-auto">
-              Cada projecto é um testemunho do nosso compromisso com a excelência
-              e com ambientes impecáveis.
-            </p>
-          </div>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="Galeria"
+          title="Resultados que falam por si."
+          description="Cada projecto é um testemunho do nosso compromisso com a excelência e com ambientes impecáveis."
+          align="center"
+          className="mb-16 lg:mb-20"
+        />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {galleryItems.map((item, idx) => (

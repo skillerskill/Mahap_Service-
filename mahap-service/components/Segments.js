@@ -2,6 +2,7 @@
 
 import { Building2, Stethoscope, Hotel, Utensils, Factory, GraduationCap, Home, Landmark } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 const segments = [
   { icon: Stethoscope, label: 'Hospitais e Clínicas' },
@@ -18,18 +19,13 @@ export default function Segments() {
   return (
     <section id="segmentos" aria-labelledby="segments-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
       <div className="container-xl">
-        <ScrollReveal variant="fadeUp">
-          <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
-            <p className="eyebrow mb-6 justify-center">Segmentos</p>
-            <h2 id="segments-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
-              Setores que confiam na Mahap Service.
-            </h2>
-            <p className="lead mx-auto">
-              Atendemos desde hospitais a hotéis, escritórios a indústrias —
-              cada sector com protocolos específicos e equipas especializadas.
-            </p>
-          </div>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="Segmentos"
+          title="Setores que confiam na Mahap Service."
+          description="Atendemos desde hospitais a hotéis, escritórios a indústrias — cada sector com protocolos específicos e equipas especializadas."
+          align="center"
+          className="mb-16 lg:mb-20"
+        />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {segments.map((segment, idx) => (

@@ -1,17 +1,19 @@
 // app/page.js — Homepage
 
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import About from '@/components/About';
-import SpartanBanner from '@/components/SpartanBanner';
-import ServicesGrid from '@/components/ServicesGrid';
-import Segments from '@/components/Segments';
-import Gallery from '@/components/Gallery';
-import Testimonials from '@/components/Testimonials';
-import FAQSection from '@/components/FAQSection';
-import CTASection from '@/components/CTASection';
-import Footer from '@/components/Footer';
+
+const SpartanBanner = dynamic(() => import('@/components/SpartanBanner'), { loading: () => <div className="min-h-[400px]" /> });
+const ServicesGrid = dynamic(() => import('@/components/ServicesGrid'), { loading: () => <div className="min-h-[400px]" /> });
+const Segments = dynamic(() => import('@/components/Segments'), { loading: () => <div className="min-h-[400px]" /> });
+const Gallery = dynamic(() => import('@/components/Gallery'), { loading: () => <div className="min-h-[400px]" /> });
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { loading: () => <div className="min-h-[400px]" /> });
+const FAQSection = dynamic(() => import('@/components/FAQSection'), { loading: () => <div className="min-h-[400px]" /> });
+const CTASection = dynamic(() => import('@/components/CTASection'), { loading: () => <div className="min-h-[400px]" /> });
+const Footer = dynamic(() => import('@/components/Footer'), { loading: () => <div className="min-h-[200px]" /> });
 
 export const metadata = {
   title: 'Mahap Service — Limpeza Profissional & Aplicador Oficial Spartan® em Angola',

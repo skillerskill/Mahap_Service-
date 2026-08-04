@@ -6,6 +6,7 @@ import { services } from '@/data/services';
 import { campaignImages } from '@/data/visuals';
 import CampaignImage from '@/components/CampaignImage';
 import ScrollReveal from './ScrollReveal';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 const iconMap = {
   Building2, Sofa, Car, Shield,
@@ -48,18 +49,12 @@ export default function ServicesGrid() {
       {/* Soluções Mahap Service */}
       <section id="solucoes" aria-labelledby="solutions-heading" className="py-24 lg:py-32 bg-[var(--bg-elevated)]">
         <div className="container-xl">
-          <ScrollReveal variant="fadeUp">
-            <div className="max-w-2xl mb-16 lg:mb-20">
-              <p className="eyebrow mb-6">Soluções</p>
-              <h2 id="solutions-heading" className="text-[clamp(2rem,3.5vw,2.75rem)] mb-6">
-                Soluções completas para cada necessidade.
-              </h2>
-              <p className="lead">
-                Da venda de produtos profissionais à formação técnica — oferecemos um ecossistema
-                completo de limpeza e higienização para empresas angolanas.
-              </p>
-            </div>
-          </ScrollReveal>
+          <SectionHeader
+            eyebrow="Soluções"
+            title="Soluções completas para cada necessidade."
+            description="Da venda de produtos profissionais à formação técnica — oferecemos um ecossistema completo de limpeza e higienização para empresas angolanas."
+            className="mb-16 lg:mb-20"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {solutions.map((solution, idx) => (

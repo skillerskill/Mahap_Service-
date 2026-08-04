@@ -23,8 +23,10 @@ function AnimatedNumber({ value, duration = 2 }) {
   useEffect(() => {
     if (!isInView) return;
     const numericPart = parseFloat(value.replace(/[^0-9.]/g, ''));
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: animation value initialization
     if (isNaN(numericPart)) { setDisplayValue(value); return; }
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: animation value initialization
     if (mq.matches) { setDisplayValue(numericPart); return; }
     const startTime = Date.now();
     let rafId;

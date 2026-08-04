@@ -1,7 +1,14 @@
 // components/Hero.js — Hero wrapper (Server Component)
 
-import HeroContent from './HeroContent';
+import HeroSlider from './Hero/HeroSlider';
 
 export default function Hero() {
-  return <HeroContent />;
+  return (
+    <section
+      id="inicio"
+      aria-label="Mahap Service — limpeza profissional em Angola"
+    >
+      <HeroSlider />
+    </section>
+  );
 }
