@@ -52,7 +52,7 @@ export default function SpartanBanner() {
 
           <RevealImage delay={0.1} className="relative aspect-[4/5] max-h-[520px] rounded-2xl">
             <CampaignImage
-              src={campaignImages.spartan}
+              src={campaignImages.peroxy}
               alt="Produtos e equipamento profissional Spartan utilizados pela Mahap Service"
               fill
               className="object-cover"

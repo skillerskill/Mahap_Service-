@@ -117,8 +117,6 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="theme-color" content="#0C1B33" />
         <meta name="msapplication-TileColor" content="#0C1B33" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="stylesheet" href="/swiper.min.css" />
         <script
           type="application/ld+json"

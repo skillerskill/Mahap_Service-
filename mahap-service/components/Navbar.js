@@ -52,10 +52,10 @@ export default function Navbar() {
   return (
     <header
       role="banner"
-      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-[450ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[450ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
         isScrolled
-          ? 'bg-white/92 backdrop-saturate-150 shadow-[0_1px_3px_rgba(15,23,42,0.04),0_4px_24px_rgba(15,23,42,0.06)]'
-          : 'bg-white/0'
+          ? 'bg-white/95 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_3px_rgba(15,23,42,0.04),0_4px_24px_rgba(15,23,42,0.06)]'
+          : 'bg-transparent'
       }`}
     >
       <nav className="container-xl flex items-center justify-between h-[72px]" aria-label="Navegação principal">
@@ -68,16 +68,16 @@ export default function Navbar() {
           <Image
             src="/images/mahap.png"
             alt=""
-            width={64}
-            height={64}
+            width={80}
+            height={80}
             className="object-contain"
             priority
           />
           <div className="flex flex-col">
-            <span className="font-bold text-[0.9375rem] tracking-tight text-[var(--text-primary)] leading-tight">
+            <span className={`font-bold text-[0.9375rem] tracking-tight leading-tight transition-colors duration-300 ${isScrolled ? 'text-[var(--text-primary)]' : 'text-white'}`}>
               Mahap Service
             </span>
-            <span className="text-[0.625rem] font-medium text-[var(--text-muted)] tracking-wide uppercase leading-tight hidden sm:block">
+            <span className={`text-[0.625rem] font-medium tracking-wide uppercase leading-tight hidden sm:block transition-colors duration-300 ${isScrolled ? 'text-[var(--text-muted)]' : 'text-white/70'}`}>
               Limpeza Profissional
             </span>
           </div>
@@ -90,8 +90,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`nav-link text-[0.875rem] font-medium transition-colors duration-300 py-1 ${
                   isActive(link.href)
-                    ? 'text-[var(--brand-blue)]'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]'
+                    ? isScrolled ? 'text-[var(--brand-blue)]' : 'text-white'
+                    : isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/80 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -106,9 +106,11 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5">
           <a
             href={`tel:${companyInfo.phone1Raw}`}
-            className="flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--brand-blue)] transition-colors tabular-nums group"
+            className={`flex items-center gap-2 text-sm font-medium transition-colors tabular-nums group ${
+              isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/80 hover:text-white'
+            }`}
           >
-            <Phone size={14} className="text-[var(--brand-blue)] opacity-70 group-hover:opacity-100 transition-opacity" />
+            <Phone size={14} className={isScrolled ? 'text-[var(--brand-blue)]' : 'text-white'} />
             {companyInfo.phone1}
           </a>
           <Link href="/contacto" className="btn-primary !py-2.5 !px-5 !text-sm">
@@ -119,7 +121,9 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 -mr-2 text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] rounded-lg transition-colors"
+          className={`lg:hidden p-2 -mr-2 rounded-lg transition-colors ${
+            isScrolled ? 'text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]' : 'text-white hover:bg-white/10'
+          }`}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}

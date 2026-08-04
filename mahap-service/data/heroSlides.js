@@ -1,12 +1,12 @@
 /**
  * Dados dos slides do Hero — Mahap Service
- * 3 slides com imagens do Unsplash + imagens existentes
+ * 3 slides com imagens profissionais do Unsplash
  */
 
 const heroSlides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?fm=jpg&q=60&w=1260&auto=format&fit=crop',
     eyebrow: 'Distribuidor oficial · Angola',
     title: 'Limpeza com precisão de detalhes',
     description:
@@ -16,8 +16,8 @@ const heroSlides = [
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=85',
-    eyebrow: 'Spartan® · Estados Unidos',
+    image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?fm=jpg&q=60&w=1260&auto=format&fit=crop',
+    eyebrow: 'Spartan® · Angola',
     title: 'Produtos que as empresas mais exigentes escolhem',
     description:
       'Química profissional sustentável com eficácia comprovada. Da venda à aplicação técnica — o parceiro certo em Angola.',
@@ -26,7 +26,7 @@ const heroSlides = [
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1563453392217-320f3277c317?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?fm=jpg&q=60&w=1260&auto=format&fit=crop',
     eyebrow: 'Luanda · Angola',
     title: 'Ambientes impecáveis, sempre',
     description:
