@@ -43,9 +43,9 @@ export default function Testimonials() {
           {testimonials.map((testimonial, idx) => (
             <ScrollReveal key={testimonial.name} variant="slideUpBounce" delay={idx * 0.1}>
               <div className="h-full p-5 sm:p-8 rounded-2xl bg-white border border-[var(--border-light)] card-hover card-premium flex flex-col">
-                <div className="flex items-center gap-1 mb-6">
+                <div className="flex items-center gap-1 mb-6" aria-label={`${testimonial.rating} de 5 estrelas`}>
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+                    <Star key={i} size={14} className="fill-amber-400 text-amber-400" aria-hidden />
                   ))}
                 </div>
 

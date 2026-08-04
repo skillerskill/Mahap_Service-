@@ -72,24 +72,25 @@ function ContactForm() {
         <input
           id="nome" name="nome" value={form.nome} onChange={handleChange}
           className={`form-input ${errors.nome ? '!border-red-400 focus:!shadow-[0_0_0_4px_rgba(248,113,113,0.15)]' : ''}`}
-          autoComplete="name" placeholder="O seu nome"
+          autoComplete="name" placeholder="O seu nome" required aria-required="true"
         />
-        {errors.nome && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><AlertCircle size={12} />{errors.nome}</p>}
+        {errors.nome && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1" role="alert"><AlertCircle size={12} />{errors.nome}</p>}
       </div>
       <div>
         <label htmlFor="telefone" className="form-label">Telefone / WhatsApp</label>
         <input
           id="telefone" name="telefone" type="tel" value={form.telefone} onChange={handleChange}
           className={`form-input ${errors.telefone ? '!border-red-400 focus:!shadow-[0_0_0_4px_rgba(248,113,113,0.15)]' : ''}`}
-          autoComplete="tel" placeholder="+244 900 000 000"
+          autoComplete="tel" placeholder="+244 900 000 000" required aria-required="true"
         />
-        {errors.telefone && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><AlertCircle size={12} />{errors.telefone}</p>}
+        {errors.telefone && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1" role="alert"><AlertCircle size={12} />{errors.telefone}</p>}
       </div>
       <div>
         <label htmlFor="servico" className="form-label">Serviço</label>
         <select
           id="servico" name="servico" value={form.servico} onChange={handleChange}
           className={`form-input ${errors.servico ? '!border-red-400 focus:!shadow-[0_0_0_4px_rgba(248,113,113,0.15)]' : ''} ${!form.servico ? 'text-[var(--text-muted)]' : ''}`}
+          required aria-required="true"
         >
           <option value="" disabled>Selecione</option>
           {services.map((s) => (
@@ -97,16 +98,16 @@ function ContactForm() {
           ))}
           <option value="Outro">Outro</option>
         </select>
-        {errors.servico && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><AlertCircle size={12} />{errors.servico}</p>}
+        {errors.servico && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1" role="alert"><AlertCircle size={12} />{errors.servico}</p>}
       </div>
       <div>
         <label htmlFor="mensagem" className="form-label">Mensagem</label>
         <textarea
           id="mensagem" name="mensagem" value={form.mensagem} onChange={handleChange} rows={5}
           className={`form-input resize-none ${errors.mensagem ? '!border-red-400 focus:!shadow-[0_0_0_4px_rgba(248,113,113,0.15)]' : ''}`}
-          placeholder="Descreva o seu projeto ou necessidade..."
+          placeholder="Descreva o seu projeto ou necessidade..." required aria-required="true"
         />
-        {errors.mensagem && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><AlertCircle size={12} />{errors.mensagem}</p>}
+        {errors.mensagem && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1" role="alert"><AlertCircle size={12} />{errors.mensagem}</p>}
       </div>
       <button type="submit" className="btn-primary justify-center group">
         <MessageCircle size={18} aria-hidden />

@@ -9,7 +9,7 @@
     --bg-inverse-light: #162A4A;
     --text-primary: #0F172A;
     --text-secondary: #475569;
-    --text-muted: #94A3B8;
+    --text-muted: #64748B;
     --brand-blue: #1E40AF;
     --brand-blue-hover: #1D4ED8;
     --brand-blue-soft: rgba(30, 64, 175, 0.08);
@@ -99,6 +99,15 @@
   @keyframes hero-fade-up {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: none; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
   }
 
   @keyframes hero-fade-in-right {
@@ -319,7 +328,7 @@
     content: '';
     width: 1.5rem;
     height: 2px;
-    background: var(--brand-blue);
+    background: currentColor;
     border-radius: 1px;
   }
 
@@ -566,7 +575,7 @@
   }
 
   .section-dark .lead {
-    color: rgba(255, 255, 255, 0.62);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .section-alt {

@@ -23,11 +23,11 @@ export default function CTASection() {
 
             <div className="relative lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
               <div className="lg:col-span-7 mb-10 lg:mb-0">
-                <p className="text-[0.75rem] font-bold tracking-[0.14em] uppercase text-white/50 mb-4">Próximo passo</p>
+                <p className="text-[0.75rem] font-bold tracking-[0.14em] uppercase text-white/70 mb-4">Próximo passo</p>
                 <h2 id="cta-heading" className="text-[clamp(1.75rem,3vw,2.5rem)] text-white mb-4 leading-tight">
                   Conte-nos o seu espaço. Nós desenhamos a solução.
                 </h2>
-                <p className="text-base text-white/50 leading-relaxed max-w-md">
+                <p className="text-base text-white/70 leading-relaxed max-w-md">
                   Orçamento gratuito, resposta em 24 horas e proposta adaptada
                   ao volume, horário e criticidade do ambiente.
                 </p>
@@ -39,23 +39,23 @@ export default function CTASection() {
                     Solicitar orçamento
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden />
                   </Link>
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary-light w-full sm:w-auto justify-center group">
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary-light w-full sm:w-auto justify-center group" aria-label="Contactar por WhatsApp">
                     WhatsApp
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden />
                   </a>
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-white/40">
-                    <Phone size={14} className="text-white/30 shrink-0" />
+                  <div className="flex items-center gap-3 text-sm text-white/60">
+                    <Phone size={14} className="text-white/50 shrink-0" />
                     <span className="tabular-nums break-all">{companyInfo.phone1}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-white/40">
-                    <Mail size={14} className="text-white/30 shrink-0" />
+                  <div className="flex items-center gap-3 text-sm text-white/60">
+                    <Mail size={14} className="text-white/50 shrink-0" />
                     <span className="break-all">{companyInfo.email}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-white/40">
-                    <MapPin size={14} className="text-white/30 shrink-0" />
+                  <div className="flex items-center gap-3 text-sm text-white/60">
+                    <MapPin size={14} className="text-white/50 shrink-0" />
                     <span>{companyInfo.address.city}, {companyInfo.address.country}</span>
                   </div>
                 </div>

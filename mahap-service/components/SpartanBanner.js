@@ -34,11 +34,11 @@ export default function SpartanBanner() {
               {credentials.map((item) => (
                 <div key={item.title} className="flex gap-4 group">
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 transition-colors duration-300">
-                    <item.icon size={18} className="text-white/70" />
+                    <item.icon size={18} className="text-white/80" />
                   </div>
                   <div>
                     <dt className="text-white font-semibold text-[0.9375rem] mb-1">{item.title}</dt>
-                    <dd className="text-white/45 text-sm leading-relaxed">{item.detail}</dd>
+                    <dd className="text-white/60 text-sm leading-relaxed">{item.detail}</dd>
                   </div>
                 </div>
               ))}

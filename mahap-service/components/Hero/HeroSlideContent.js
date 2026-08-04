@@ -22,7 +22,7 @@ export default function HeroSlideContent({ slide, isActive }) {
         <div className="max-w-2xl">
           {slide.eyebrow && (
             <p
-              className={`eyebrow mb-4 sm:mb-6 text-white/80 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+              className={`eyebrow mb-4 sm:mb-6 text-white ${ready ? 'hero-fade-up' : 'opacity-0'}`}
               style={ready ? { animationDelay: '0.1s' } : undefined}
             >
               {slide.eyebrow}
@@ -40,7 +40,7 @@ export default function HeroSlideContent({ slide, isActive }) {
 
           {slide.description && (
             <p
-              className={`text-[0.9375rem] sm:text-[1.0625rem] text-white/75 leading-[1.7] max-w-xl mb-6 sm:mb-10 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
+              className={`text-[0.9375rem] sm:text-[1.0625rem] text-white/90 leading-[1.7] max-w-xl mb-6 sm:mb-10 ${ready ? 'hero-fade-up' : 'opacity-0'}`}
               style={ready ? { animationDelay: '0.35s' } : undefined}
             >
               {slide.description}

@@ -67,7 +67,7 @@ export default function Navbar() {
         >
           <Image
             src="/images/mahap.png"
-            alt=""
+            alt="Mahap Service"
             width={80}
             height={80}
             className="object-contain"
@@ -88,10 +88,11 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
                 className={`nav-link text-[0.875rem] font-medium transition-colors duration-300 py-1 ${
                   isActive(link.href)
                     ? isScrolled ? 'text-[var(--brand-blue)]' : 'text-white'
-                    : isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/80 hover:text-white'
+                    : isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/90 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -107,7 +108,7 @@ export default function Navbar() {
           <a
             href={`tel:${companyInfo.phone1Raw}`}
             className={`flex items-center gap-2 text-sm font-medium transition-colors tabular-nums group ${
-              isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/80 hover:text-white'
+              isScrolled ? 'text-[var(--text-secondary)] hover:text-[var(--brand-blue)]' : 'text-white/90 hover:text-white'
             }`}
           >
             <Phone size={14} className={isScrolled ? 'text-[var(--brand-blue)]' : 'text-white'} />
@@ -134,6 +135,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
+        role="menu"
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
           isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         } bg-white border-b border-[var(--border-light)] shadow-lg`}
@@ -144,6 +146,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
+              role="menuitem"
               className={`py-3.5 font-medium text-[0.9375rem] transition-colors border-b border-[var(--border-light)] last:border-0 ${
                 isActive(link.href)
                   ? 'text-[var(--brand-blue)]'
@@ -154,7 +157,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contacto" onClick={closeMenu} className="btn-primary mt-4 justify-center">
+          <Link href="/contacto" onClick={closeMenu} className="btn-primary mt-4 justify-center" role="menuitem">
             Solicitar orçamento
           </Link>
         </div>
