@@ -2,9 +2,10 @@
 
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
-import About from '@/components/About';
+
+const Hero = dynamic(() => import('@/components/Hero'), { loading: () => <div className="hero-fullscreen bg-[var(--brand-navy)]" /> });
+const Stats = dynamic(() => import('@/components/Stats'), { loading: () => <div className="py-10 sm:py-16 bg-white border-y border-[var(--border-light)]" /> });
+const About = dynamic(() => import('@/components/About'), { loading: () => <div className="py-16 sm:py-24 bg-[var(--bg-elevated)]" /> });
 const SpartanBanner = dynamic(() => import('@/components/SpartanBanner'), { loading: () => <div className="min-h-[400px]" /> });
 const ServicesGrid = dynamic(() => import('@/components/ServicesGrid'), { loading: () => <div className="min-h-[400px]" /> });
 const Segments = dynamic(() => import('@/components/Segments'), { loading: () => <div className="min-h-[400px]" /> });
@@ -16,7 +17,7 @@ const Footer = dynamic(() => import('@/components/Footer'), { loading: () => <di
 export const metadata = {
   title: 'Mahap Service — Limpeza Profissional & Aplicador Oficial Spartan® em Angola',
   description:
-    'A Mahap Service é o distribuidor e aplicador oficial dos produtos Spartan® em Angola. Limpeza geral, higienização de estofos, detailing automóvel e controlo de pragas em Luanda.',
+    'A Mahap Service é o distribuidor e aplicador oficial dos produtos Spartan® em Angola. Especialistas em limpeza geral, higienização de estofos, detailing automóvel e controlo de pragas em Luanda.',
   alternates: { canonical: 'https://mahapservice.com' },
 };
 

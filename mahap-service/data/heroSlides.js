@@ -1,12 +1,12 @@
 /**
  * Dados dos slides do Hero — Mahap Service
- * 3 slides com imagens profissionais do Unsplash
+ * 3 slides com imagens locais optimizadas
  */
 
 const heroSlides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?fm=jpg&q=60&w=1260&auto=format&fit=crop',
+    image: '/images/hero-1.jpg',
     eyebrow: 'Distribuidor oficial · Angola',
     title: 'Limpeza com precisão de detalhes',
     description:
@@ -16,7 +16,7 @@ const heroSlides = [
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?fm=jpg&q=60&w=1260&auto=format&fit=crop',
+    image: '/images/hero-2.jpg',
     eyebrow: 'Spartan® · Angola',
     title: 'Produtos que as empresas mais exigentes escolhem',
     description:
@@ -26,7 +26,7 @@ const heroSlides = [
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?fm=jpg&q=60&w=1260&auto=format&fit=crop',
+    image: '/images/hero-3.jpg',
     eyebrow: 'Luanda · Angola',
     title: 'Ambientes impecáveis, sempre',
     description:

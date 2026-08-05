@@ -9,7 +9,7 @@
     --bg-inverse-light: #162A4A;
     --text-primary: #0F172A;
     --text-secondary: #475569;
-    --text-muted: #64748B;
+    --text-muted: #6B7280;
     --brand-blue: #1E40AF;
     --brand-blue-hover: #1D4ED8;
     --brand-blue-soft: rgba(30, 64, 175, 0.08);
@@ -32,7 +32,7 @@
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
     background-color: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.65;
@@ -214,7 +214,7 @@
     padding: 0.9375rem 1.75rem;
     background: transparent;
     color: #fff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 999px;
@@ -233,44 +233,6 @@
   .btn-hero-outline:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 3px;
-  }
-
-  /* ===== SWIPER OVERRIDES ===== */
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    height: 100%;
-    width: 100%;
-  }
-
-  .swiper-slide-active {
-    z-index: 1;
-  }
-
-  .swiper-pagination-bullets {
-    bottom: 2rem !important;
-  }
-
-  /* ===== SWIPER PAGINATION ===== */
-  .hero-pagination .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.4);
-    opacity: 1;
-    transition: all 0.4s var(--ease-out);
-    border-radius: 999px;
-  }
-
-  .hero-pagination .swiper-pagination-bullet-active {
-    width: 28px;
-    background: #fff;
-  }
-
-  .hero-pagination .swiper-pagination-bullet:hover {
-    background: rgba(255, 255, 255, 0.7);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -313,7 +275,7 @@
 
 @layer components {
   .eyebrow {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -347,7 +309,7 @@
     padding: 0.9375rem 1.75rem;
     background: var(--brand-blue);
     color: #fff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     letter-spacing: -0.01em;
@@ -398,7 +360,7 @@
     padding: 0.9375rem 1.75rem;
     background: transparent;
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 999px;
@@ -427,7 +389,7 @@
     padding: 0.9375rem 1.75rem;
     background: var(--brand-orange);
     color: #fff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     letter-spacing: -0.01em;
@@ -478,7 +440,7 @@
     padding: 0.9375rem 1.75rem;
     background: transparent;
     color: var(--brand-orange);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 999px;
@@ -507,7 +469,7 @@
     padding: 0.9375rem 1.75rem;
     background: #fff;
     color: var(--brand-navy);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 999px;
@@ -546,7 +508,7 @@
     border: 1.5px solid var(--border-light);
     border-radius: 12px;
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-jakarta), sans-serif;
     font-size: 0.9375rem;
     transition: all 0.25s var(--ease-out);
     outline: none;

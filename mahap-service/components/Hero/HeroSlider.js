@@ -1,53 +1,82 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import KenBurnsImage from './KenBurnsImage';
 import HeroSlideContent from './HeroSlideContent';
 import heroSlides from '@/data/heroSlides';
 
+const SLIDE_INTERVAL = 6000;
+const TRANSITION_DURATION = 1200;
+
 export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [ready, setReady] = useState(false);
-  const swiperRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const total = heroSlides.length;
 
   useEffect(() => {
     setReady(true);
   }, []);
 
+  const goTo = useCallback(
+    (index) => {
+      setActiveIndex((index + total) % total);
+    },
+    [total]
+  );
+
+  const next = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(next, SLIDE_INTERVAL);
+    return () => clearInterval(id);
+  }, [next, isPaused]);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else goTo(activeIndex - 1);
+    }
+  };
+
   return (
-    <div className="hero-fullscreen relative w-full overflow-hidden bg-[var(--brand-navy)]">
-      <Swiper
-        modules={[Autoplay, EffectFade, Pagination]}
-        effect="fade"
-        fadeEffect={{ crossFade: true }}
-        speed={1200}
-        autoplay={{
-          delay: 6000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        pagination={{
-          clickable: true,
-          el: '.hero-pagination',
-        }}
-        loop
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="absolute inset-0"
-        aria-label="Apresentação Mahap Service"
-        role="region"
-      >
+    <div
+      className="hero-fullscreen relative w-full overflow-hidden bg-[var(--brand-navy)]"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
-          <SwiperSlide key={slide.id}>
+          <div
+            key={slide.id}
+            className="absolute inset-0 transition-opacity"
+            style={{
+              opacity: index === activeIndex ? 1 : 0,
+              transitionDuration: `${TRANSITION_DURATION}ms`,
+              transitionTimingFunction: 'ease-in-out',
+              zIndex: index === activeIndex ? 1 : 0,
+            }}
+          >
             <div className="relative h-full w-full">
               <KenBurnsImage
                 src={slide.image}
                 alt={slide.title}
-                isActive={activeIndex === index && ready}
+                isActive={index === activeIndex && ready}
                 variant={index}
               />
               <div
@@ -65,14 +94,43 @@ export default function HeroSlider() {
               />
               <HeroSlideContent
                 slide={slide}
-                isActive={activeIndex === index}
+                isActive={index === activeIndex}
               />
             </div>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
 
-      <div className="hero-pagination absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2" />
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2"
+        role="tablist"
+        aria-label="Slides da apresentação"
+      >
+        {heroSlides.map((slide, index) => (
+          <button
+            key={slide.id}
+            role="tab"
+            aria-selected={index === activeIndex}
+            aria-label={`Slide ${index + 1}: ${slide.title}`}
+            onClick={() => goTo(index)}
+            className="group relative w-10 h-[3px] rounded-full transition-all duration-500"
+            style={{
+              backgroundColor:
+                index === activeIndex
+                  ? 'white'
+                  : 'rgba(255, 255, 255, 0.35)',
+            }}
+          >
+            <span
+              className="absolute inset-0 rounded-full bg-white origin-left"
+              style={{
+                transform: index === activeIndex ? 'scaleX(1)' : 'scaleX(0)',
+                transition: `transform ${SLIDE_INTERVAL}ms linear`,
+              }}
+            />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,18 @@
 // app/layout.js — Root Layout com Metadata Global
 
+import localFont from 'next/font/local';
 import './globals.css';
 import WhatsAppButton from '@/components/WhatsAppButton';
+
+const plusJakarta = localFont({
+  src: [
+    { path: '../public/fonts/PlusJakartaSans-latin-wght.woff2', style: 'normal' },
+    { path: '../public/fonts/PlusJakartaSans-latin-italic.woff2', style: 'italic' },
+  ],
+  display: 'swap',
+  variable: '--font-jakarta',
+  weight: '100 900',
+});
 
 export const metadata = {
   metadataBase: new URL('https://mahapservice.com'),
@@ -113,31 +124,11 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-AO">
+    <html lang="pt-AO" className={plusJakarta.variable}>
       <head>
         <meta name="theme-color" content="#0C1B33" />
         <meta name="msapplication-TileColor" content="#0C1B33" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1581578731548-c64695cc6952?fm=jpg&q=60&w=1260&auto=format&fit=crop" fetchPriority="high" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap';
-                document.head.appendChild(link);
-
-                var swiper = document.createElement('link');
-                swiper.rel = 'stylesheet';
-                swiper.href = '/swiper.min.css';
-                document.head.appendChild(swiper);
-              })();
-            `,
-          }}
-        />
+        <link rel="preload" as="image" href="/images/hero-1.jpg" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
